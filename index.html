@@ -167,9 +167,14 @@
                 });
 
                 // Bug fix
-                document.getElementById('typing_area').addEventListener('keyup', (event) => {
+                typing_area.addEventListener('keyup', (event) => {
                     delete keysPressed[event.key];
                 });
+
+                // Deterrant from using text selection to erase letters
+                typing_area.addEventListener('select', function() {
+                    this.selectionStart = this.selectionEnd;
+                }, false);
                         
                 // Declare seconds and minutes
                 let seconds_value = document.getElementById('seconds');
