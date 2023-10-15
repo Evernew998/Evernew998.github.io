@@ -76,7 +76,7 @@
                     keysPressed[event.key] = true;
 
                     if (keysPressed['Control'] && event.key == 'Backspace') {
-                        event.preventDefault();
+                        turn_all_letters_white();
                         return false;
                     }
         
