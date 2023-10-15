@@ -63,6 +63,8 @@
         
                 // Count the number of times that keys needed to be pressed (including spacebar) to type all the words in random_word_list
                 let total_keys = calculate_keys(random_word_list);
+
+                let keysPressed = {};
         
                 typing_area.addEventListener('keydown', function(event) {
                     let key = event.key;
@@ -71,7 +73,6 @@
                     let id = "w" + (new_length - 1);
 
                     // Bug fix
-                    let keysPressed = {};
                     keysPressed[event.key] = true;
 
                     if (keysPressed['Control'] && event.key == 'Backspace') {
