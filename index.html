@@ -69,6 +69,15 @@
                     let new_length = typing_area.value.length;
                     let color = "green";
                     let id = "w" + (new_length - 1);
+
+                    // Bug fix
+                    let keysPressed = {};
+                    keysPressed[event.key] = true;
+
+                    if (keysPressed['Control'] && event.key == 'Backspace') {
+                        event.preventDefault();
+                        return false;
+                    }
         
                     // Increment key_count for each key pressed except if the key was backspace
                     if (key != 'Backspace') {
@@ -155,7 +164,12 @@
                         }
                     }
                 });
-        
+
+                // Bug fix
+                document.getElementById('typing_area').addEventListener('keyup', (event) => {
+                    delete keysPressed[event.key];
+                });
+                        
                 // Declare seconds and minutes
                 let seconds_value = document.getElementById('seconds');
                 let minutes_value = document.getElementById('minutes');
